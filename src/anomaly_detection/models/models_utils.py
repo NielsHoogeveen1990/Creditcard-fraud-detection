@@ -2,6 +2,7 @@ from sklearn.metrics import classification_report
 from sklearn.model_selection import train_test_split
 from anomaly_detection.preprocessing import get_df
 from anomaly_detection.models import isolationforest
+import pickle
 
 
 def split_data(df):
@@ -23,8 +24,8 @@ def evaluate(y_hat, y_true):
     print(classification_report(y_true, y_hat))
 
 
-def run():
-    df = get_df('data/creditcard.csv')
+def run(datapath, model_version):
+    df = get_df(datapath)
 
     X_train, X_test, y_train, y_test = split_data(df)
 
@@ -33,3 +34,6 @@ def run():
     y_hat = fitted_model.predict(X_test)
 
     evaluate(y_hat, y_test)
+
+    with open(f'src/anomaly_detection/trained_models/model_{model_version}.pkl', 'wb') as file:
+        pickle.dump(fitted_model, file)

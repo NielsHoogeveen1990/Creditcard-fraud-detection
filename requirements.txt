@@ -3,3 +3,5 @@ numpy
 missingno
 plotly
 seaborn
+click==7.0
+click-pathlib==2019.6.13.1
