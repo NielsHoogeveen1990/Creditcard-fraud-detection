@@ -3,6 +3,7 @@ from sklearn.model_selection import train_test_split
 from anomaly_detection.preprocessing import get_df
 from anomaly_detection.models import isolationforest
 import pickle
+from anomaly_detection.utils import log_step
 
 
 def split_data(df):
@@ -24,6 +25,7 @@ def evaluate(y_hat, y_true):
     print(classification_report(y_true, y_hat))
 
 
+@log_step
 def run(datapath, model_version):
     df = get_df(datapath)
 

@@ -1,14 +1,15 @@
 from sklearn.ensemble import IsolationForest
 
-from sklearn.impute import SimpleImputer
+from sklearn.impute import SimpleImputer, KNNImputer
+
 from sklearn.pipeline import make_pipeline
-from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import StandardScaler, RobustScaler
 
 
 def pipeline():
     return make_pipeline(
-        SimpleImputer(),
-        StandardScaler(),
+        KNNImputer(n_neighbors=5),
+        RobustScaler(),
         IsolationForest(n_estimators=100,
                         max_samples='auto',
                         contamination=0.01,

@@ -8,7 +8,10 @@ def read_data(data_path):
 
 
 def drop_irrelevant_features(df, *cols):
-    return df.drop(columns=list(cols))
+    try:
+        return df.drop(columns=list(cols))
+    except:
+        return df
 
 
 def replace_classes(df):
@@ -21,5 +24,6 @@ def replace_classes(df):
 def get_df(data_path):
     return (read_data(data_path)
     .pipe(drop_irrelevant_features, 'Time')
+    .drop_duplicates(keep='first')
     .pipe(replace_classes)
             )
