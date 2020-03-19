@@ -5,7 +5,7 @@ from sklearn.impute import SimpleImputer
 from sklearn.base import BaseEstimator, TransformerMixin
 import pandas as pd
 
-from anomaly_detection.transformers.DTypeSelector import DTypeSelector
+from anomaly_detection.transformers.dtype_selector import DTypeSelector
 
 
 class CustomModelCategoricalImputer(BaseEstimator, TransformerMixin):
