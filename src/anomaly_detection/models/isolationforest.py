@@ -1,6 +1,11 @@
 from sklearn.ensemble import IsolationForest
 
 from sklearn.impute import SimpleImputer, KNNImputer
+from sklearn.feature_extraction import FeatureHasher
+
+# only use imputation when not MAR and MCAR
+# For imputation import DataWig for NN imputation
+# Import fancyimpute for MICE (IterativeImputer)
 
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler, RobustScaler

@@ -9,6 +9,10 @@ from anomaly_detection.transformers.dtype_selector import DTypeSelector
 
 
 class CustomModelCategoricalImputer(BaseEstimator, TransformerMixin):
+    """
+    This class creates an object to impute categorical missing values, based on a chosen classifier.
+    The X data will be splitted in training data.
+    """
 
     def __init__(self,
                  column,

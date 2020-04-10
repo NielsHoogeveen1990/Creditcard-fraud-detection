@@ -10,7 +10,7 @@ def split_data(df):
     X = df.drop(columns='Class')
     y = df['Class']
 
-    return train_test_split(X, y, random_state=42)
+    return train_test_split(X, y, test_size=0.3, stratify=y, random_state=123)
 
 
 def fit(model, X_train):
@@ -25,7 +25,6 @@ def evaluate(y_hat, y_true):
     print(classification_report(y_true, y_hat))
 
 
-@log_step
 def run(datapath, model_version):
     df = get_df(datapath)
 
